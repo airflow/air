@@ -3,11 +3,8 @@
 echo "cleaning up"
 set +x
 #
-# sudo mv terraform.tfstate        /tmp
-# sudo mv terraform.tfstate.backup /tmp
-# sudo mv terraform_apply.txt      /tmp
-# sudo mv :tmp:inputData.txt       /tmp
 #
+#git remote set-url origin git@github.com:airflow/air.git
 echo +x
 echo "pushing to GitHub changes including $1"
 echo -x
