@@ -1,7 +1,7 @@
 
 AIRFLOW README & Answers to Questions presented by the Project Team
 
-DevOps Admin: Erich EJ Best 
+DevOps Admin: Erich EJ Best
 email:        erich.ej.best@gmail.com
 phone:        201-218-9860
 
@@ -12,7 +12,7 @@ Approach and Choices Explained
 
 Choices you had to make due to time pressure
 
-•	Currently working 12 hours or so at my current job there was limited time and days where no time was available.  Most of the time looking at this project was multi-tasking.
+•	Currently working 12 hours daily 7 days or so at my current job (severty 1 outage and conference calls) there was limited time and days where no time was available.  Most of the time looking at this project was multi-tasking.
 
 •	Chose to deliver the project using a combination of a scripted solution using the tools of AWS CLI, Terraform and User_Data to get a single execution automated solution.
 
