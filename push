@@ -1,0 +1,16 @@
+#!/bin/bash
+# simple push command
+echo "cleaning up"
+set +x
+#
+# sudo mv terraform.tfstate        /tmp
+# sudo mv terraform.tfstate.backup /tmp
+# sudo mv terraform_apply.txt      /tmp
+# sudo mv :tmp:inputData.txt       /tmp
+#
+echo +x
+echo "pushing to GitHub changes including $1"
+echo -x
+git add .
+git commit -vm "$1"
+git push origin master
