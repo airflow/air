@@ -4,7 +4,6 @@ DevOps Admin: Erich EJ Best
 email:        erich.ej.best@gmail.com
 phone:        201-218-9860
 
-
 Approach and Choices Explained
 
 •	I chose to use the airflow https://airflow.apache.org/installation.html and utilize available installation choices.
@@ -21,7 +20,11 @@ Known deviations from best practice or real production setup
 
 •	A DNS solution should be used and would need to be part of the solution (DNS worked in my testing lab).
 
-•	In a production setup would have a more robust Pipeline including orchestration and tracking DevOps solutions
+•	In a production setup would have a more robust Pipeline including orchestration and tracking DevOps solutions.
+
+•	Used the ec2-user account; seen there could be a airflow account used or follow the Enterprise.
+
+•	The overall security, networking and ports should be given attention.
 
 Description of the setup, why you chose the technologies used in your stack
 

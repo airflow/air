@@ -47,10 +47,15 @@ echo "##### sudo /usr/local/bin/pip install --ignore-installed airflow[s3,hive,p
 echo "##################################################################################"
 sudo /usr/local/bin/pip install --ignore-installed airflow[s3,hive,python]
 echo "##################################################################################"
+echo "##### airflow-webserver.conf #####################################################"
+echo "##################################################################################"
+sudo cp /home/ec2-user/airflow-webserver.conf /etc/init/airflow-webserver.conf
+echo "##################################################################################"
 echo "##### airflow initdb #############################################################"
 echo "##################################################################################"
-#airflow initdb
+airflow initdb
 echo "##################################################################################"
-echo "##### nohup airflow webserver ####################################################"
+echo "##### sudo /sbin/initctl start airflow-webserver #################################"
 echo "##################################################################################"
 #nohup airflow webserver &
+sudo /sbin/initctl start airflow-webserver

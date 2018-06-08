@@ -15,9 +15,7 @@ resource "aws_instance" "airflow" {
   key_name                    = "${var.key_name}"
   # TODO: make this instance profile have access to private chef bucket
   iam_instance_profile        = "${aws_iam_instance_profile.ssm_profile.id}"
-
-
- provisioner "file" {
+   provisioner "file" {
     source                    = "/Users/ej/.ssh/id_rsa"
     destination               = "/home/ec2-user/.ssh/id_rsa"
     connection {
@@ -27,10 +25,8 @@ resource "aws_instance" "airflow" {
       private_key             = "${file("/Users/ej/.ssh/ej_key_pair.pem")}"
       timeout                 = "300s"
     }
-  }
-
-
-    provisioner "file" {
+   }
+   provisioner "file" {
     source                    = "./files/airflow_user_data.sh"
     destination               = "/home/ec2-user/airflow_user_data.sh"
     connection {
@@ -39,15 +35,23 @@ resource "aws_instance" "airflow" {
       type                    = "ssh"
       private_key             = "${file("/Users/ej/.ssh/ej_key_pair.pem")}"
       timeout                 = "300s"
-    }
-  }
-
+      }
+   }
+   provisioner "file" {
+     source                    = "./files/airflow-webserver.conf"
+     destination               = "/home/ec2-user/airflow-webserver.conf"
+     connection {
+       user                    = "ec2-user"
+       agent                   = "false"
+       type                    = "ssh"
+       private_key             = "${file("/Users/ej/.ssh/ej_key_pair.pem")}"
+       timeout                 = "300s"
+     }
+   }
    provisioner "remote-exec" {
     inline = [
       "chmod +x /home/ec2-user/airflow_user_data.sh",
       "/home/ec2-user/airflow_user_data.sh",
-      "/home/ec2-user/airflow initdb",
-      "/home/ec2-user/nohup airflow webserver &",
     ]
 	    connection {
       user                    = "ec2-user"
@@ -55,13 +59,16 @@ resource "aws_instance" "airflow" {
       type                    = "ssh"
       private_key             = "${file("/Users/ej/.ssh/ej_key_pair.pem")}"
       timeout                 = "300s"
-    }
-  }
-  tags {
+     }
+   }
+   tags {
         Name                  = "airflow"
         Environment           = "Test"
   }
 }
+
+#"airflow initdb",
+#"nohup airflow webserver &",
 
 resource "aws_iam_instance_profile" "ssm_profile" {
   name                        = "ssm_profile"
