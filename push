@@ -3,7 +3,6 @@
 echo "cleaning up"
 set +x
 #
-#
 #git remote set-url origin git@github.com:airflow/air.git
 echo +x
 echo "pushing to GitHub changes including $1"
